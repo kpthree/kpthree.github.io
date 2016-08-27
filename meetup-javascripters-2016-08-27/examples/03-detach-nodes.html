@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Detached nodes</title>
+    <link rel="stylesheet" type="text/css" href="examples.css">
+    <script type="text/javascript">
+    var frags = [];
+
+    function  createFrag() {
+        var i, frag, div;
+        frag = document.createDocumentFragment();
+        for(i = 0; i < 50; i++) {
+            div = document.createElement("div");
+            div.appendChild(document.createTextNode(i + " - " + new Date().toTimeString()));
+            frag.appendChild(div);
+        }
+        frags.push(frag);
+    }
+
+    function createDetachedNodes() {
+        var i;
+        for(i = 0; i < 10; i++) {
+            createFrag();
+        }
+    }
+
+    function cleanNodes() {
+        frags.length = 0;
+    }
+    </script>
+</head>
+
+<body>
+    <h1>Detached nodes</h1>
+    <p>Take heap snapshots and find detached nodes</p>
+    <p>
+        <button onclick="createDetachedNodes()">Create detached nodes</button>
+    </p>
+    <p>
+        <button onclick="cleanNodes()">Clean detached nodes</button>
+    </p>
+    <hr><pre>'use strict';
+
+var frags = [];
+
+function  createFrag() {
+    var i, frag, div;
+    frag = document.createDocumentFragment();
+    for(i = 0; i < 50; i++) {
+        div = document.createElement("div");
+        div.appendChild(document.createTextNode(i + " - " + new Date().toTimeString()));
+        frag.appendChild(div);
+    }
+    frags.push(frag);
+}
+
+function createDetachedNodes() {
+    var i;
+    for(i = 0; i < 10; i++) {
+        createFrag();
+    }
+}
+
+function cleanNodes() {
+    frags.length = 0;
+}</pre>
+</body>
+
+</html>
